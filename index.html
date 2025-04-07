@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Akibul Hassan</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-color: #f0f8ff;
+      --text-color: #2c3e50;
+      --header-bg: #3b5998;
+      --nav-bg: #4b79a1;
+      --nav-hover: #ff7f50;
+      --footer-bg: #3b5998;
+      --footer-link: #ff7f50;
+      --accent-color: #e91e63;
+      --section-bg: #ffffff;
+      --container-width: 1000px;
+    }
+    body.dark {
+      --bg-color: #121212;
+      --text-color: #f5f5f5;
+      --header-bg: #1f1f1f;
+      --nav-bg: #2a2a2a;
+      --nav-hover: #ff9800;
+      --footer-bg: #1f1f1f;
+      --footer-link: #ff9800;
+      --section-bg: #1e1e1e;
+      --accent-color: #ff4081;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg-color);
+      color: var(--text-color);
+      transition: background 0.3s, color 0.3s;
+      line-height: 1.6;
+      padding-bottom: 3rem;
+    }
+
+    header {
+      background: var(--header-bg);
+      color: white;
+      padding: 1rem;
+      font-size: 2rem;
+      font-weight: 700;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      letter-spacing: 2px;
+    }
+
+    nav {
+      background: var(--nav-bg);
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding: 0.6rem;
+      gap: 0.6rem;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      font-weight: 500;
+      border-radius: 20px;
+      transition: 0.3s;
+    }
+
+    nav a:hover, nav a.active {
+      background: var(--nav-hover);
+      color: #fff;
+    }
+
+    section {
+      display: none;
+      padding: 2rem 1rem;
+      background-color: var(--section-bg);
+      min-height: 70vh;
+      animation: fade 0.3s ease-in-out;
+      border-top: 3px solid var(--accent-color);
+    }
+
+    section.active {
+      display: block;
+    }
+
+    .container {
+      max-width: var(--container-width);
+      margin: auto;
+    }
+
+    footer {
+      background: var(--footer-bg);
+      color: white;
+      padding: 1rem;
+      text-align: center;
+      position: fixed;
+      width: 100%;
+      bottom: 0;
+      z-index: 5;
+    }
+
+    footer a {
+      color: var(--footer-link);
+      text-decoration: none;
+    }
+
+    h2 {
+      color: var(--accent-color);
+      margin-bottom: 1rem;
+    }
+
+    .memory-images {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+    }
+
+    .memory-images img {
+      width: 300px;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s;
+    }
+
+    .memory-images img:hover {
+      transform: scale(1.05);
+    }
+
+    @keyframes fade {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .education-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .education-table th,
+    .education-table td {
+      border: 1px solid #ccc;
+      padding: 8px 12px;
+      text-align: left;
+    }
+
+    .education-table th {
+      background-color: var(--nav-bg);
+      color: white;
+    }
+
+    .toggle-theme {
+      position: fixed;
+      right: 1rem;
+      top: 1rem;
+      background: var(--accent-color);
+      color: white;
+      border: none;
+      border-radius: 20px;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      z-index: 20;
+      font-weight: 600;
+      transition: background 0.3s;
+    }
+
+    .toggle-theme:hover {
+      background: var(--nav-hover);
+    }
+
+    .resume-button {
+      display: inline-block;
+      margin-top: 1rem;
+      background-color: var(--accent-color);
+      color: white;
+      padding: 0.6rem 1.2rem;
+      border-radius: 20px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.3s;
+    }
+
+    .resume-button:hover {
+      background-color: var(--nav-hover);
+    }
+
+    .typing {
+      color: var(--accent-color);
+      font-weight: bold;
+      font-size: 1.3rem;
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <button class="toggle-theme" onclick="toggleTheme()">Toggle Theme</button>
+  <header>AKIBUL HASSAN</header>
+  <nav id="navbar">
+    <a href="#home" onclick="showSection('home')">Home</a>
+    <a href="#about" onclick="showSection('about')">About</a>
+    <a href="#skills" onclick="showSection('skills')">Skills</a>
+    <a href="#education" onclick="showSection('education')">Education</a>
+    <a href="#experience" onclick="showSection('experience')">Experience</a>
+    <a href="#memories" onclick="showSection('memories')">Memories</a>
+    <a href="#feedback" onclick="showSection('feedback')">Feedback</a>
+    <a href="#contact" onclick="showSection('contact')">Contact Me</a>
+  </nav>
+
+  <section id="home" class="active container">
+    <h2>Welcome</h2>
+    <p>This is the personal webpage of Akibul Hassan.</p>
+    <div class="typing" id="typing-text"></div>
+    <a class="resume-button" href="resume.pdf" download>Download My Resume</a>
+  </section>
+
+  <section id="about" class="container">
+    <h2>About Me</h2>
+    <p>I am Akibul Hassan, a dedicated professional with experience in administration, technical support, and education. I hold degrees including BA, BCA, PGDCA, D.El.Ed, and currently pursuing MCA. Passionate about education, tech innovation, and continuous learning. Worked with Mandia Anchalik College and GMDC Baghbar.</p>
+  </section>
+
+  <section id="skills" class="container">
+    <h2>Skills</h2>
+    <ul>
+      <li>HTML, CSS, JavaScript</li>
+      <li>Programming: C, Java, Python</li>
+      <li>Hardware & Networking</li>
+      <li>Web & Network Administration</li>
+      <li>MS Office, Photoshop, PageMaker</li>
+      <li>Generative AI</li>
+    </ul>
+  </section>
+
+  <section id="education" class="container">
+    <h2>Education</h2>
+    <table class="education-table">
+      <tr><th>Qualification</th><th>Board/University</th><th>Year</th></tr>
+      <tr><td>BA</td><td>Gauhati University</td><td>2013</td></tr>
+      <tr><td>BCA</td><td>IGNOU</td><td>2019</td></tr>
+      <tr><td>PGDCA</td><td>KKHSOU</td><td>2021</td></tr>
+      <tr><td>D.El.Ed</td><td>NIOS</td><td>2022</td></tr>
+      <tr><td>MCA (Pursuing)</td><td>IGNOU</td><td>—</td></tr>
+    </table>
+  </section>
+
+  <section id="experience" class="container">
+    <h2>Experience</h2>
+    <ul>
+      <li>5 years as Junior Assistant at Mandia Anchalik College</li>
+      <li>2 years as Junior Assistant at Govt. Model Degree College, Baghbar</li>
+      <li>Part-time Web Developer</li>
+    </ul>
+  </section>
+
+  <section id="memories" class="container">
+    <h2>Memories</h2>
+    <div class="memory-images">
+      <img src="images/memory1.jpg" alt="Memory 1">
+      <img src="images/memory2.jpg" alt="Memory 2">
+      <img src="images/memory3.jpg" alt="Memory 3">
+    </div>
+  </section>
+
+  <section id="feedback" class="container">
+    <h2>Feedback</h2>
+    <p>If you have any suggestions or feedback, feel free to share!</p>
+    <p><a href="https://forms.gle/your-form-id" target="_blank" class="resume-button">Submit Feedback</a></p>
+  </section>
+
+  <section id="contact" class="container">
+    <h2>Contact Me</h2>
+    <p>Phone: <a href="tel:7002859244">7002859244</a></p>
+    <p>Email: <a href="mailto:akibul41@gmail.com">akibul41@gmail.com</a></p>
+    <p>WhatsApp: <a href="https://wa.me/7002859244" target="_blank">wa.me/7002859244</a></p>
+  </section>
+
+  <footer>
+    <a href="#contact" onclick="showSection('contact')">Contact Me</a>
+  </footer>
+
+  <script>
+    function showSection(id) {
+      document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+      document.querySelector(`#${id}`).classList.add('active');
+      document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+      document.querySelector(`nav a[href="#${id}"]`).classList.add('active');
+    }
+
+    function toggleTheme() {
+      document.body.classList.toggle('dark');
+      localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'dark') document.body.classList.add('dark');
+
+      const hash = window.location.hash.substring(1);
+      if (hash) showSection(hash);
+
+      const phrases = ["Educator", "Web Developer", "Tech Enthusiast", "Network Administrator", "AI Explorer"];
+      let part = 0, index = 0, direction = 1;
+      const element = document.getElementById("typing-text");
+
+      function typeLoop() {
+        const phrase = phrases[part];
+        if (direction === 1) {
+          index++;
+        } else {
+          index--;
+        }
+        element.textContent = phrase.substring(0, index);
+        if (index === phrase.length) {
+          direction = -1;
+          setTimeout(typeLoop, 1500);
+        } else if (index === 0) {
+          direction = 1;
+          part = (part + 1) % phrases.length;
+          setTimeout(typeLoop, 500);
+        } else {
+          setTimeout(typeLoop, 100);
+        }
+      }
+      typeLoop();
+    });
+  </script>
+</body>
+</html>
